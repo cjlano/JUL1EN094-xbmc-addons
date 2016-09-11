@@ -53,7 +53,7 @@ def get_shows(url,isTitle=False):
         if shows :
             for show in shows :
                 show_url = common.parseDOM(show,'a',ret='href')[0]
-                show_img = 'http:%s' %(common.parseDOM(show,'img',ret='src')[0])
+                show_img = common.parseDOM(show,'img',ret='src')[0]
                 if isTitle :
                     show_name = common.parseDOM(show,'img',ret='alt')[0]
                 else :
@@ -81,7 +81,7 @@ def get_episodes(url):
     epi_s = common.parseDOM(all,'li',attrs={'class':'col-md-3'})
     for epi in epi_s :
         epi_url  = common.parseDOM(epi,'a',ret='href')[0]
-        epi_img  = 'http:%s' %(common.parseDOM(epi,'img',ret='src')[0])
+        epi_img  = common.parseDOM(epi,'img',ret='src')[0]
         epi_name = common.parseDOM(epi,'span',attrs={'class':'title'})[0]
         epi_name = common.replaceHTMLCodes(epi_name)
         epi_name = common.stripTags(epi_name).encode('utf-8')
